@@ -10,46 +10,46 @@ body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #
 textarea, button { width:100%; max-width:700px; margin:10px auto; display:block; padding:14px; border-radius:12px; }
 button { background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font-weight:600; cursor:pointer; }
 .result { background:rgba(255,255,255,0.1); padding:25px; border-radius:16px; margin:25px auto; max-width:700px; text-align:left; display:none; }
-.recommendation { background:#1e3a2f; padding:15px; border-radius:10px; margin-top:15px; }
 </style>
 </head>
 <body>
 <h2>🧠 Konten AI Analyzer - Istikmal Syariah</h2>
-<textarea id="content" rows="8" placeholder="Paste caption yang mau di cek di sini..."></textarea>
-<button onclick="analyzeSyariah()">🔍 Analisis & Beri Saran</button>
+<textarea id="content" rows="8" placeholder="Paste caption yang mau dianalisis di sini..."></textarea>
+<button onclick="analyzeContent()">🔍 Analisis & Beri Saran</button>
 
 <div id="result" class="result"></div>
-
 <a href="index.html" style="display:block; text-align:center; margin-top:30px; color:#a8e6cf;">← Kembali ke Menu</a>
 
 <script>
-function analyzeSyariah() {
+function analyzeContent() {
   const text = document.getElementById('content').value.trim();
   if (!text) return alert('Masukkan caption dulu!');
+
+  let tema = "Umroh & Masa Depan";
+  if (text.toLowerCase().includes("phk") || text.toLowerCase().includes("karyawan") || text.toLowerCase().includes("kerja")) {
+    tema = "Kestabilan Kerja & PHK";
+  }
 
   document.getElementById('result').style.display = 'block';
   document.getElementById('result').innerHTML = `
     <h3>📊 Hasil Analisis</h3>
     <p><strong>Panjang teks:</strong> ${text.length} karakter</p>
-    <p><strong>Emosi:</strong> Positif</p>
+    <p><strong>Tema Terdeteksi:</strong> ${tema}</p>
+    <p><strong>Emosi:</strong> Positif / Motivasi</p>
     <p><strong>Potensi Prospek:</strong> Sedang - Tinggi</p>
     
-    <div class="recommendation">
-      <h4>✍️ Rekomendasi Perbaikan:</h4>
-      <p>Tambahkan elemen berikut agar lebih menarik prospek:</p>
-      <ul>
-        <li>Manfaat Umroh / masa depan keluarga</li>
-        <li>Keunggulan Syariah (dana kembali full + profit halal)</li>
-        <li>Call-to-Action yang jelas (DM / Chat)</li>
-      </ul>
-    </div>
+    <h4>✍️ Rekomendasi Perbaikan:</h4>
+    <ul>
+      <li>Tambahkan hubungan dengan <strong>Istikmal Syariah</strong> sebagai solusi jangka panjang</li>
+      <li>Berikan Call-to-Action yang jelas (DM / Chat)</li>
+      <li>Tambahkan emoji yang relevan 🤲 atau 💼</li>
+    </ul>
 
     <h4>📌 Versi yang Disarankan:</h4>
-    <p>"Assalamualaikum wr. wb.<br><br>
-    Ingin mempersiapkan Umroh keluarga dengan tenang? 🤲<br>
-    Istikmal Syariah 3IReborn adalah solusi nabung Syariah terbaik.<br>
-    Nabung rutin 5-7 tahun, dana dikembalikan penuh + hasil investasi halal.<br><br>
-    Mau info lengkap? Silakan DM ya, semoga berkah untuk kita semua."</p>
+    <p>"${text}<br><br>
+    Solusi terbaik adalah mempersiapkan masa depan dengan <strong>Istikmal Syariah 3IReborn</strong>.<br>
+    Nabung Syariah untuk Umroh atau kebutuhan penting lainnya. Dana kembali penuh + profit halal.<br>
+    Mau tahu caranya? DM yuk 🤲 #IstikmalSyariah #3IReborn"</p>
   `;
 }
 </script>
