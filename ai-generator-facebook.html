@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Facebook Prospek Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #001f3f, #003366); color: white; margin:0; padding:20px; }
+.container { max-width: 800px; margin: 0 auto; }
+h2 { text-align: center; }
+textarea, input, button { width:100%; max-width:700px; margin:10px auto; display:block; padding:14px; border-radius:12px; }
+button { background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font-weight:700; font-size:1.1rem; cursor:pointer; }
+button:hover { transform:scale(1.05); box-shadow: 0 10px 20px rgba(0,180,216,0.4); }
+.result { background:rgba(255,255,255,0.1); padding:25px; border-radius:16px; margin:25px auto; text-align:left; display:none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>🧠 AI Facebook Prospek Generator</h2>
+  <p style="text-align:center; opacity:0.9;">Buat konten & script penjualan otomatis</p>
+
+  <input type="text" id="produk" placeholder="Nama Produk / Jasa">
+  <textarea id="target" rows="3" placeholder="Target Audience (contoh: ibu rumah tangga umur 25-40)"></textarea>
+  
+  <button onclick="generateAll()">🚀 GENERATE SEMUA</button>
+
+  <div id="result" class="result"></div>
+  <a href="index.html" style="display:block; text-align:center; margin-top:20px; color:#00b4d8;">← Kembali ke Menu</a>
+</div>
+
+<script>
+function generateAll() {
+  const produk = document.getElementById('produk').value.trim();
+  if (!produk) return alert("Masukkan nama produk/jasa dulu!");
+  
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').innerHTML = `
+    <h3>✅ Hasil untuk: <strong>${produk}</strong></h3>
+    
+    <h4>1. Caption Iklan</h4>
+    <p>"Moms, cape liat kulit kusam & jerawat? ${produk} sudah bantu ribuan ibu glowing! 💖 DM sekarang untuk info & promo!"</p>
+    
+    <h4>2. Targeting Audience</h4>
+    <ul>
+      <li>Usia: 24 - 45 tahun</li>
+      <li>Gender: Perempuan</li>
+      <li>Interest: Skincare, Kecantikan, Beauty, Fashion</li>
+    </ul>
+    
+    <h4>3. Script DM</h4>
+    <p>"Halo kak, terima kasih sudah lihat postingan ${produk}. Kakak lagi cari solusi untuk masalah apa nih? 😊"</p>
+  `;
+}
+</script>
+</body>
+</html>
