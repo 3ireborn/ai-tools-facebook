@@ -3,34 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konten AI Analyzer</title>
+<title>Konten AI Analyzer - Istikmal Syariah</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
 body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #001f3f, #003366); color: white; margin:0; padding:20px; }
 textarea, button { width:100%; max-width:700px; margin:10px auto; display:block; padding:14px; border-radius:12px; }
 button { background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font-weight:600; cursor:pointer; }
 .result { background:rgba(255,255,255,0.1); padding:25px; border-radius:16px; margin:25px auto; max-width:700px; text-align:left; display:none; }
+.recommendation { background:#1e3a2f; padding:15px; border-radius:10px; margin-top:15px; }
 </style>
 </head>
 <body>
-<h2>🧠 Konten AI Analyzer</h2>
-<textarea id="content" rows="8" placeholder="Paste caption / teks postingan Facebook di sini..."></textarea>
-<button onclick="analyzeContent()">Analisis Konten</button>
+<h2>🧠 Konten AI Analyzer - Istikmal Syariah</h2>
+<textarea id="content" rows="8" placeholder="Paste caption yang mau di cek di sini..."></textarea>
+<button onclick="analyzeSyariah()">🔍 Analisis & Beri Saran</button>
+
 <div id="result" class="result"></div>
-<a href="index.html" style="display:block; text-align:center; margin-top:20px; color:#00b4d8;">← Kembali ke Menu</a>
+
+<a href="index.html" style="display:block; text-align:center; margin-top:30px; color:#a8e6cf;">← Kembali ke Menu</a>
 
 <script>
-function analyzeContent() {
+function analyzeSyariah() {
   const text = document.getElementById('content').value.trim();
-  if (!text) return alert('Masukkan teks postingan dulu!');
-  
+  if (!text) return alert('Masukkan caption dulu!');
+
   document.getElementById('result').style.display = 'block';
   document.getElementById('result').innerHTML = `
     <h3>📊 Hasil Analisis</h3>
     <p><strong>Panjang teks:</strong> ${text.length} karakter</p>
-    <p><strong>Emosi:</strong> Positif / Netral</p>
-    <p><strong>Saran Perbaikan:</strong> Tambahkan Call-to-Action yang lebih kuat + emoji relevan.</p>
-    <p><strong>Skor Engagement:</strong> 7.8 / 10</p>
+    <p><strong>Emosi:</strong> Positif</p>
+    <p><strong>Potensi Prospek:</strong> Sedang - Tinggi</p>
+    
+    <div class="recommendation">
+      <h4>✍️ Rekomendasi Perbaikan:</h4>
+      <p>Tambahkan elemen berikut agar lebih menarik prospek:</p>
+      <ul>
+        <li>Manfaat Umroh / masa depan keluarga</li>
+        <li>Keunggulan Syariah (dana kembali full + profit halal)</li>
+        <li>Call-to-Action yang jelas (DM / Chat)</li>
+      </ul>
+    </div>
+
+    <h4>📌 Versi yang Disarankan:</h4>
+    <p>"Assalamualaikum wr. wb.<br><br>
+    Ingin mempersiapkan Umroh keluarga dengan tenang? 🤲<br>
+    Istikmal Syariah 3IReborn adalah solusi nabung Syariah terbaik.<br>
+    Nabung rutin 5-7 tahun, dana dikembalikan penuh + hasil investasi halal.<br><br>
+    Mau info lengkap? Silakan DM ya, semoga berkah untuk kita semua."</p>
   `;
 }
 </script>
