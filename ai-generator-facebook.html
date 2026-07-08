@@ -3,94 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Istikmal Syariah Prospek Generator - 3IReborn</title>
+<title>Prospek Istikmal Syariah - 3IReborn</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body { 
-  font-family: 'Poppins', sans-serif; 
-  background: linear-gradient(135deg, #001f3f, #003366); 
-  color: white; 
-  margin:0; 
-  padding:20px; 
-}
+body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #001f3f, #003366); color: white; margin:0; padding:20px; }
 .container { max-width: 800px; margin: 0 auto; }
 h2 { text-align: center; color: #a8e6cf; }
-textarea, input, button { 
-  width:100%; 
-  max-width:700px; 
-  margin:10px auto; 
-  display:block; 
-  padding:14px; 
-  border-radius:12px; 
-}
-button { 
-  background: linear-gradient(90deg, #00b4d8, #0077b6); 
-  color:white; 
-  font-weight:700; 
-  font-size:1.1rem; 
-  cursor:pointer; 
-}
-button:hover { transform:scale(1.05); box-shadow: 0 10px 20px rgba(0,180,216,0.4); }
-.result { 
-  background:rgba(255,255,255,0.1); 
-  padding:25px; 
-  border-radius:16px; 
-  margin:25px auto; 
-  text-align:left; 
-  display:none; 
-}
+input, textarea, button { width:100%; max-width:700px; margin:10px auto; display:block; padding:14px; border-radius:12px; }
+button { background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font-weight:700; font-size:1.1rem; cursor:pointer; }
+button:hover { transform:scale(1.05); }
+.result { background:rgba(255,255,255,0.1); padding:25px; border-radius:16px; margin:25px auto; text-align:left; display:none; }
+.copy-btn { background:#4caf50; margin-top:5px; }
 </style>
 </head>
 <body>
 <div class="container">
-  <h2>🧠 AI Istikmal Syariah Prospek Generator</h2>
-  <p style="text-align:center; opacity:0.9;">3IReborn - Nabung Syariah untuk Umroh & Masa Depan Keluarga</p>
+  <h2>🎯 Prospek Istikmal Syariah Generator</h2>
+  <p style="text-align:center;">3IReborn - Nabung untuk Umroh & Masa Depan</p>
 
-  <input type="text" id="target" placeholder="Target Audience (contoh: Muslimah 28-42 tahun, keluarga muda)">
-  <button onclick="generateIstikmal()">🚀 Generate Konten & Script</button>
+  <input type="text" id="target" placeholder="Target Prospek (contoh: muslimah 30-42 tahun ibu rumah tangga)">
+  <button onclick="generateProspek()">🚀 GENERATE BAHAN PROSPEK</button>
 
   <div id="result" class="result"></div>
-  
-  <a href="index.html" style="display:block; text-align:center; margin-top:30px; color:#a8e6cf;">← Kembali ke Menu Utama</a>
+  <a href="index.html" style="display:block; text-align:center; margin-top:30px; color:#a8e6cf;">← Kembali</a>
 </div>
 
 <script>
-function generateIstikmal() {
+function generateProspek() {
   const target = document.getElementById('target').value.trim() || "keluarga Muslim usia produktif";
   
   document.getElementById('result').style.display = 'block';
   document.getElementById('result').innerHTML = `
-    <h3>✅ Hasil untuk Istikmal Syariah 3IReborn</h3>
+    <h3>✅ Bahan Prospek untuk: <strong>${target}</strong></h3>
     
-    <h4>1. Caption Facebook (Siap Posting)</h4>
-    <p>"Assalamualaikum wr. wb.<br><br>
-    Alhamdulillah, sudah banyak saudara kita yang mempersiapkan masa depan keluarga dengan tenang melalui <strong>Istikmal Syariah 3IReborn</strong>.<br><br>
-    Program nabung Syariah yang insyaAllah bisa mewujudkan Umroh keluarga dalam 5-7 tahun.<br>
-    Dana dikembalikan penuh + hasil investasi halal.<br><br>
-    Mau tahu caranya? Silakan DM ya, semoga berkah 🤲"</p>
+    <h4>1. Caption Postingan (Pilih salah satu)</h4>
+    <p><strong>Caption A:</strong><br>
+    "Assalamualaikum, apakah Anda ingin mempersiapkan Umroh keluarga sambil menabung Syariah?<br>
+    Istikmal Syariah 3IReborn hadir sebagai solusi. Nabung 5-7 tahun, dana kembali penuh + profit halal.<br>
+    DM untuk info lebih lanjut 🤲"</p>
     
-    <h4>2. Targeting Facebook Ads</h4>
+    <button class="copy-btn" onclick="copyText(this)">Copy Caption A</button>
+    
+    <h4>2. Script DM (Langsung Copy)</h4>
+    <p><strong>DM 1 (Pembuka):</strong><br>
+    "Assalamualaikum kak, saya dari 3IReborn. Melihat kakak tertarik dengan perencanaan keuangan Syariah, boleh saya share program Istikmal untuk Umroh?"</p>
+    <button class="copy-btn" onclick="copyText(this)">Copy DM 1</button>
+    
+    <h4>3. Pertanyaan Kualifikasi Prospek</h4>
     <ul>
-      <li><strong>Usia:</strong> 25 - 45 tahun (utama) & 50+ tahun</li>
-      <li><strong>Gender:</strong> Semua (prioritas Perempuan)</li>
-      <li><strong>Interest:</strong> Keuangan Syariah, Umroh, Haji, Asuransi Syariah, Investasi Halal, Perencanaan Keluarga</li>
-      <li><strong>Lokasi:</strong> Seluruh Indonesia</li>
-    </ul>
-    
-    <h4>3. Script DM Prospek</h4>
-    <p><strong>Script Pembuka:</strong><br>
-    "Assalamualaikum kak, terima kasih sudah melihat postingan tentang Istikmal Syariah.<br>
-    Apakah kakak sedang mempersiapkan masa depan keluarga atau perjalanan Umroh?"</p>
-    
-    <h4>4. Ide Edukasi Konten</h4>
-    <ul>
-      <li>Perbedaan Istikmal Syariah dengan tabungan biasa</li>
-      <li>Cara nabung ringan untuk Umroh 5-7 tahun</li>
-      <li>Proteksi jiwa Syariah untuk keluarga</li>
-      <li>Testimoni peserta yang sudah merasakan manfaatnya</li>
-      <li>Persiapan pensiun dengan cara Syariah</li>
+      <li>Sudah punya rencana Umroh atau Haji?</li>
+      <li>Berapa target dana yang ingin disiapkan?</li>
+      <li>Apakah tertarik dengan program Syariah yang halal & aman?</li>
     </ul>
   `;
+}
+
+function copyText(btn) {
+  const text = btn.previousElementSibling ? btn.previousElementSibling.innerText : btn.parentElement.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.innerText;
+    btn.innerText = "✅ Copied!";
+    setTimeout(() => btn.innerText = original, 2000);
+  });
 }
 </script>
 </body>
