@@ -6,49 +6,20 @@
 <title>AI Chat Assistant - Istikmal Syariah</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body { 
-  font-family: 'Poppins', sans-serif; 
-  background: linear-gradient(135deg, #001f3f, #003366); 
-  color: white; 
-  margin:0; 
-  padding:20px; 
-}
+body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #001f3f, #003366); color: white; margin:0; padding:20px; }
 .container { max-width: 700px; margin: 0 auto; }
 h2 { text-align: center; }
-textarea { 
-  width:100%; 
-  height: 150px; 
-  padding:14px; 
-  border-radius:12px; 
-  margin-bottom:10px;
-}
-button { 
-  width:100%; 
-  padding:14px; 
-  background: linear-gradient(90deg, #00b4d8, #0077b6); 
-  color:white; 
-  font-weight:700; 
-  border:none; 
-  border-radius:12px; 
-  cursor:pointer; 
-}
-button:hover { transform: scale(1.03); }
-.response { 
-  background:rgba(255,255,255,0.1); 
-  padding:20px; 
-  border-radius:12px; 
-  margin-top:20px; 
-  text-align:left; 
-  display:none; 
-}
+textarea { width:100%; height: 160px; padding:14px; border-radius:12px; margin-bottom:10px; }
+button { width:100%; padding:16px; background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font-weight:700; border:none; border-radius:12px; cursor:pointer; }
+.response { background:rgba(255,255,255,0.1); padding:20px; border-radius:12px; margin-top:20px; text-align:left; display:none; }
 </style>
 </head>
 <body>
 <div class="container">
-  <h2>💬 AI Chat Assistant - Istikmal Syariah</h2>
-  <p style="text-align:center; opacity:0.9;">Tanya apa saja seputar prospek, konten, atau Istikmal</p>
+  <h2>💬 AI Chat Assistant - Istikmal Syariah 3IReborn</h2>
+  <p style="text-align:center; opacity:0.9;">Tanya apa saja, saya bantu jawab khusus untuk prospek Istikmal</p>
 
-  <textarea id="prompt" placeholder="Contoh: Buat caption untuk karyawan yang takut PHK..."></textarea>
+  <textarea id="prompt" placeholder="Contoh pertanyaan:\n- Bagaimana cara mengatasi prospek yang tidak mau join?\n- Buat caption untuk karyawan yang takut PHK"></textarea>
   <button onclick="sendChat()">🚀 Kirim Pertanyaan</button>
 
   <div id="result" class="response"></div>
@@ -63,11 +34,18 @@ function sendChat() {
 
   const result = document.getElementById('result');
   result.style.display = 'block';
+  
+  let jawaban = "Maaf, saya belum bisa menjawab pertanyaan tersebut secara detail (masih versi beta).";
+
+  if (prompt.toLowerCase().includes("tidak mau join") || prompt.toLowerCase().includes("menolak")) {
+    jawaban = "Cara mengatasi prospek yang tidak mau join:<br><br>1. Tanya dulu keberatannya apa (takut scam, tidak paham, budget, dll)<br>2. Berikan penjelasan Syariah & jaminan dana kembali<br>3. Kirim testimoni peserta yang sudah berhasil Umroh<br>4. Tawarkan konsultasi gratis tanpa tekanan<br>5. Follow up secara perlahan (jangan langsung hard sell)";
+  } else if (prompt.toLowerCase().includes("phk") || prompt.toLowerCase().includes("karyawan")) {
+    jawaban = "Caption yang bagus untuk tema PHK:<br><br>'Sepandai-pandai tupai melompat, akhirnya jatuh juga. Sehebat-hebatnya karyawan, suatu saat bisa kena PHK. Jangan tunggu terlambat. Persiapkan masa depan dengan Istikmal Syariah 3IReborn. Nabung Syariah untuk Umroh dan kebutuhan keluarga. Dana kembali full + profit halal. DM sekarang 🤲'";
+  }
+
   result.innerHTML = `
     <strong>Pertanyaan:</strong><br>${prompt}<br><br>
-    <strong>Jawaban AI:</strong><br>
-    Berikut jawaban dan saran untuk Istikmal Syariah 3IReborn.<br><br>
-    (Versi demo - di versi lengkap akan lebih detail dan akurat)
+    <strong>Jawaban AI:</strong><br>${jawaban}
   `;
 }
 </script>
