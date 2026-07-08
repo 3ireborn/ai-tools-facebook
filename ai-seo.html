@@ -14,8 +14,7 @@ button { background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font
 </head>
 <body>
 <h2>🚀 SEO Keyword Tool - Istikmal Syariah</h2>
-<p>Masukkan topik yang ingin dibuat kontennya</p>
-<input type="text" id="keyword" placeholder="Contoh: istikmal syariah, nabung umroh, phk karyawan">
+<input type="text" id="keyword" placeholder="Masukkan kata kunci (contoh: karyawan pabrik)">
 <button onclick="generateSEO()">Cari Keyword + Ide Konten</button>
 
 <div id="result" class="result"></div>
@@ -24,30 +23,31 @@ button { background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font
 <script>
 function generateSEO() {
   const kw = document.getElementById('keyword').value.trim();
-  if (!kw) return alert('Masukkan topik dulu!');
+  if (!kw) return alert('Masukkan kata kunci dulu!');
 
   document.getElementById('result').style.display = 'block';
   document.getElementById('result').innerHTML = `
-    <h3>🔍 Hasil Keyword untuk: <strong>${kw}</strong></h3>
+    <h3>🔍 Hasil untuk: <strong>${kw}</strong></h3>
     
     <h4>Keyword Utama & Variasi:</h4>
     <ul>
       <li>${kw}</li>
-      <li>istikmal syariah 3ireborn</li>
-      <li>nabung umroh syariah</li>
-      <li>investasi halal umroh</li>
-      <li>persiapan pensiun syariah</li>
+      <li>${kw} istikmal syariah</li>
+      <li>nabung syariah ${kw}</li>
+      <li>persiapan masa depan ${kw}</li>
+      <li>${kw} umroh syariah</li>
     </ul>
     
     <h4>Ide Judul Postingan Facebook:</h4>
     <ul>
-      <li>"Kenapa Harus Istikmal Syariah? Ini Bedanya dengan Tabungan Biasa"</li>
-      <li>"Takut Kena PHK? Begini Cara Menyiapkan Masa Depan Keluarga"</li>
-      <li>"Nabung 5-7 Tahun untuk Umroh, Bisa! Begini Caranya"</li>
-      <li>"Dana Kembali Penuh + Profit Halal, Mau?"</li>
+      <li>"Takut Kena PHK? ${kw} Harus Siapkan Masa Depan Sekarang!"</li>
+      <li>"Cara ${kw} Menyiapkan Umroh dengan Nabung Syariah"</li>
+      <li>"${kw} Bisa Nabung untuk Umroh? Ini Solusi Istikmal Syariah 3IReborn"</li>
+      <li>"Rahasia ${kw} yang Sudah Aman Masa Depannya dengan Istikmal Syariah"</li>
+      <li>"Dari ${kw} ke Calon Jamaah Umroh - Kisah Nyata Istikmal Syariah"</li>
     </ul>
     
-    <p><strong>Tips:</strong> Gunakan hashtag #IstikmalSyariah #3IReborn #NabungUmroh</p>
+    <p><strong>Tips SEO:</strong> Gunakan hashtag #IstikmalSyariah #3IReborn #NabungUmroh</p>
   `;
 }
 </script>
