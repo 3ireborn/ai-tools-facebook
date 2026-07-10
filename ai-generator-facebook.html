@@ -53,21 +53,32 @@
 
     <div class="max-w-4xl mx-auto">
         <!-- Header -->
-        <div class="text-center mb-8">
+        <div class="text-center mb-8 mt-4">
             <h1 class="text-3xl md:text-4xl font-bold text-cyan mb-2">🧠 AI FB Prospek Generator</h1>
-            <p class="text-gray-300 opacity-90">Analisa audiens, temukan pain points, & buat strategi "greget" untuk prospek Facebook.</p>
+            <p class="text-gray-300 opacity-90 text-sm md:text-base">Analisa audiens, temukan pain points, & buat strategi "greget" untuk prospek Facebook.</p>
         </div>
 
         <!-- Input Form -->
         <div class="glass-panel rounded-2xl p-6 md:p-8 mb-8 shadow-2xl">
+            
+            <!-- API Key Section -->
+            <div class="mb-6 bg-navy bg-opacity-40 p-4 rounded-xl border border-cyan border-opacity-30">
+                <label class="block text-sm font-semibold mb-2 text-cyan flex justify-between items-center">
+                    <span>🔑 API Key Gemini (Wajib)</span>
+                    <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-xs bg-cyan text-darkblue px-2 py-1 rounded hover:bg-white transition">Ambil Gratis di Sini</a>
+                </label>
+                <input type="password" id="apiKeyInput" placeholder="Paste API Key Anda di sini (AIzaSy...)" class="w-full p-3 rounded-xl bg-darkblue bg-opacity-70 border border-gray-600 focus:border-cyan focus:outline-none text-white placeholder-gray-500 text-sm">
+                <p class="text-[11px] text-gray-400 mt-2">*Hanya disimpan lokal di browser Anda. Aman 100%.</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                     <label class="block text-sm font-semibold mb-2 text-cyan">Produk / Jasa Anda</label>
-                    <input type="text" id="productInput" placeholder="Contoh: Asuransi Jiwa, Suplemen Diet, Jasa Web..." class="w-full p-3 rounded-xl bg-navy bg-opacity-50 border border-gray-600 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan text-white placeholder-gray-400 transition">
+                    <input type="text" id="productInput" placeholder="Contoh: 3iReborn..." class="w-full p-3 rounded-xl bg-navy bg-opacity-50 border border-gray-600 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan text-white placeholder-gray-400 transition">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-2 text-cyan">Target Spesifik (Opsional)</label>
-                    <input type="text" id="audienceInput" placeholder="Contoh: Ibu rumah tangga, Pekerja kantoran 30+..." class="w-full p-3 rounded-xl bg-navy bg-opacity-50 border border-gray-600 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan text-white placeholder-gray-400 transition">
+                    <input type="text" id="audienceInput" placeholder="Contoh: Pria 35 tahun..." class="w-full p-3 rounded-xl bg-navy bg-opacity-50 border border-gray-600 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan text-white placeholder-gray-400 transition">
                 </div>
             </div>
             
@@ -78,7 +89,7 @@
             <!-- Loading & Error Messages -->
             <div id="loadingIndicator" class="hidden flex-col items-center justify-center mt-6">
                 <div class="loader mb-3"></div>
-                <p class="text-cyan animate-pulse font-medium">AI sedang menganalisa data Facebook terbaik...</p>
+                <p class="text-cyan animate-pulse font-medium text-center">AI sedang menganalisa jutaan data<br>Tunggu sebentar ya...</p>
             </div>
             <div id="errorMessage" class="hidden mt-4 p-4 bg-red-500 bg-opacity-20 border border-red-500 rounded-xl text-red-200 text-center text-sm">
             </div>
@@ -88,39 +99,39 @@
         <div id="resultsContainer" class="hidden space-y-6">
             
             <!-- Persona & Targeting -->
-            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-cyan">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">🎯</span> Target Persona & Minat</h3>
-                <p id="resPersona" class="text-gray-200 leading-relaxed mb-4"></p>
+            <div class="glass-panel rounded-2xl p-5 md:p-6 border-l-4 border-l-cyan">
+                <h3 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">🎯</span> Target Persona & Minat</h3>
+                <p id="resPersona" class="text-gray-200 leading-relaxed mb-4 text-sm md:text-base"></p>
                 <div class="bg-navy bg-opacity-50 p-4 rounded-xl">
-                    <h4 class="font-semibold text-cyan mb-2">Grup / Minat FB yang harus dicari:</h4>
-                    <ul id="resKeywords" class="list-disc list-inside text-gray-300 space-y-1"></ul>
+                    <h4 class="font-semibold text-cyan mb-2 text-sm">Grup / Minat FB yang harus dicari:</h4>
+                    <ul id="resKeywords" class="list-disc list-inside text-gray-300 space-y-1 text-sm"></ul>
                 </div>
             </div>
 
             <!-- Pain Points -->
-            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-red-400">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">⚡</span> Pain Points (Tombol Pemicu)</h3>
-                <p class="text-sm text-gray-400 mb-3">Masalah utama yang membuat mereka terdesak untuk membeli produk Anda:</p>
-                <ul id="resPainPoints" class="space-y-3"></ul>
+            <div class="glass-panel rounded-2xl p-5 md:p-6 border-l-4 border-l-red-400">
+                <h3 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">⚡</span> Pain Points (Tombol Pemicu)</h3>
+                <p class="text-xs md:text-sm text-gray-400 mb-3">Masalah utama yang membuat mereka terdesak untuk membeli produk Anda:</p>
+                <ul id="resPainPoints" class="space-y-3 text-sm md:text-base"></ul>
             </div>
 
             <!-- Copywriting -->
-            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-yellow-400">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">✍️</span> Ide Status / Copywriting Hook</h3>
-                <p class="text-sm text-gray-400 mb-3">Gunakan angle ini untuk update status Facebook atau di dalam Grup:</p>
+            <div class="glass-panel rounded-2xl p-5 md:p-6 border-l-4 border-l-yellow-400">
+                <h3 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">✍️</span> Ide Status / Copywriting Hook</h3>
+                <p class="text-xs md:text-sm text-gray-400 mb-3">Gunakan angle ini untuk update status Facebook atau di dalam Grup:</p>
                 <div class="bg-navy bg-opacity-50 p-4 rounded-xl relative group">
-                    <button onclick="copyText('resCopywriting')" class="absolute top-2 right-2 bg-gray-700 hover:bg-cyan text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Copy</button>
-                    <p id="resCopywriting" class="text-gray-200 italic font-medium"></p>
+                    <button onclick="copyText('resCopywriting')" class="absolute top-2 right-2 bg-gray-700 hover:bg-cyan text-xs py-1 px-2 rounded transition-colors z-10">Copy</button>
+                    <p id="resCopywriting" class="text-gray-200 italic font-medium text-sm md:text-base pr-12"></p>
                 </div>
             </div>
 
             <!-- DM Strategy -->
-            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-green-400">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">💬</span> Strategi DM (Anti-Spam)</h3>
-                <p class="text-sm text-gray-400 mb-3">Cara elegan menyapa di Inbox Messenger tanpa terlihat seperti sales:</p>
+            <div class="glass-panel rounded-2xl p-5 md:p-6 border-l-4 border-l-green-400">
+                <h3 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">💬</span> Strategi DM (Anti-Spam)</h3>
+                <p class="text-xs md:text-sm text-gray-400 mb-3">Cara elegan menyapa di Inbox Messenger tanpa terlihat seperti sales:</p>
                 <div class="bg-navy bg-opacity-50 p-4 rounded-xl relative group">
-                    <button onclick="copyText('resDmScript')" class="absolute top-2 right-2 bg-gray-700 hover:bg-cyan text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Copy</button>
-                    <p id="resDmScript" class="text-gray-200 whitespace-pre-line"></p>
+                    <button onclick="copyText('resDmScript')" class="absolute top-2 right-2 bg-gray-700 hover:bg-cyan text-xs py-1 px-2 rounded transition-colors z-10">Copy</button>
+                    <p id="resDmScript" class="text-gray-200 whitespace-pre-line text-sm md:text-base pr-12"></p>
                 </div>
             </div>
 
@@ -132,25 +143,15 @@
     </div>
 
     <script>
-        const apiKey = ""; // API key is injected by the environment
-
-        // Exponential backoff helper function
-        const delay = ms => new Promise(res => setTimeout(res, ms));
-
-        async function fetchWithRetry(url, options, maxRetries = 5) {
-            const delays = [1000, 2000, 4000, 8000, 16000];
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return await response.json();
-                } catch (error) {
-                    if (i === maxRetries - 1) throw error;
-                    await delay(delays[i]);
-                }
+        // Load API key from local storage on page load
+        window.onload = function() {
+            const savedKey = localStorage.getItem('gemini_api_key_3ireborn');
+            if (savedKey) {
+                document.getElementById('apiKeyInput').value = savedKey;
             }
-        }
+        };
 
+        // Helper function for copy
         function copyText(elementId) {
             const text = document.getElementById(elementId).innerText;
             const tempTextArea = document.createElement("textarea");
@@ -160,14 +161,13 @@
             document.execCommand("copy");
             document.body.removeChild(tempTextArea);
             
-            // Temporary visual feedback (could be improved with a toast notification)
             const btn = document.querySelector(`#${elementId}`).previousElementSibling;
             const originalText = btn.innerText;
             btn.innerText = "Copied!";
-            btn.classList.add("bg-green-500");
+            btn.classList.add("bg-green-500", "text-white");
             setTimeout(() => {
                 btn.innerText = originalText;
-                btn.classList.remove("bg-green-500");
+                btn.classList.remove("bg-green-500", "text-white");
             }, 2000);
         }
 
@@ -181,13 +181,22 @@
         }
 
         async function generateStrategy() {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
             const product = document.getElementById('productInput').value.trim();
             const audience = document.getElementById('audienceInput').value.trim();
 
-            if (!product) {
-                showError("Mohon masukkan nama Produk / Jasa Anda terlebih dahulu.");
+            if (!apiKey) {
+                showError("Mohon masukkan API Key Gemini terlebih dahulu. Klik tombol 'Ambil Gratis' untuk mendapatkan key.");
                 return;
             }
+
+            if (!product) {
+                showError("Mohon masukkan nama Produk / Jasa Anda (contoh: 3iReborn).");
+                return;
+            }
+
+            // Save API key to local storage for future use
+            localStorage.setItem('gemini_api_key_3ireborn', apiKey);
 
             // UI State updates
             document.getElementById('errorMessage').classList.add('hidden');
@@ -198,47 +207,42 @@
 
             const targetText = audience ? `dengan target spesifik: ${audience}` : `untuk audiens umum`;
             
-            const prompt = `Anda adalah seorang pakar Digital Marketing dan spesialis Facebook Organic Prospecting yang sangat agresif namun elegan. 
-            Tugas Anda adalah membuat analisis prospek Facebook yang spesifik dan "greget" untuk produk/jasa: "${product}" ${targetText}.
+            const prompt = `Anda adalah seorang pakar Digital Marketing dan spesialis Facebook Organic Prospecting. 
+            Tugas Anda adalah membuat analisis prospek Facebook yang "greget" untuk produk/jasa: "${product}" ${targetText}.
             
             Keluarkan jawaban HANYA dalam format JSON dengan struktur persis seperti ini, tanpa markdown, tanpa teks lain:
             {
-              "persona": "Deskripsi psikologis 2-3 kalimat tentang siapa mereka sebenarnya, ketakutan mereka, dan apa yang mereka cari di Facebook.",
-              "search_keywords": ["Nama Grup FB spesifik (buat ide nama grup 3-4 kata)", "Minat/Interest Spesifik", "Tokoh yang mereka follow"],
+              "persona": "Deskripsi psikologis singkat tentang target market, apa ketakutan mereka, dan apa yang mereka cari.",
+              "search_keywords": ["Nama Grup FB spesifik (buat ide nama grup)", "Minat/Interest Spesifik", "Tokoh panutan mereka"],
               "pain_points": ["Masalah emosional terdalam 1", "Masalah finansial/waktu 2", "Frustrasi saat ini 3"],
-              "copywriting_hook": "1 paragraf pendek (Hook + Body singkat) untuk update status FB yang mengundang rasa penasaran (curiosity) atau kontroversi ringan agar orang komen 'Mau dong' atau 'Gimana caranya?'.",
-              "dm_script": "Template pesan DM (Inbox) pertama kali menyapa. Harus terdengar sangat personal, puji postingan mereka, temukan kesamaan, baru selipkan sedikit rasa penasaran tentang solusi yang Anda miliki, tanpa terlihat jualan keras."
+              "copywriting_hook": "1 paragraf pendek (Hook + Body singkat) untuk status FB yang mengundang rasa penasaran agar orang komen.",
+              "dm_script": "Template DM/Inbox sapaan pertama. Harus ramah, temukan kesamaan, selipkan rasa penasaran solusi, anti-jualan keras."
             }`;
+
+            // You can use standard gemini-1.5-flash since this is for production
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            persona: { type: "STRING" },
-                            search_keywords: { type: "ARRAY", items: { type: "STRING" } },
-                            pain_points: { type: "ARRAY", items: { type: "STRING" } },
-                            copywriting_hook: { type: "STRING" },
-                            dm_script: { type: "STRING" }
-                        },
-                        required: ["persona", "search_keywords", "pain_points", "copywriting_hook", "dm_script"]
-                    }
+                    responseMimeType: "application/json"
                 }
             };
 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
             try {
-                const data = await fetchWithRetry(apiUrl, {
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
-                if (data.error) {
-                    throw new Error(data.error.message || "Gagal menghubungi AI.");
+                const data = await response.json();
+
+                if (!response.ok) {
+                    if (response.status === 400 && data.error && data.error.message.includes("API key not valid")) {
+                        throw new Error("API Key salah atau tidak valid. Silakan periksa kembali API Key Anda.");
+                    }
+                    throw new Error(data.error?.message || "Terjadi kesalahan pada server AI.");
                 }
 
                 const resultText = data.candidates[0].content.parts[0].text;
@@ -264,7 +268,7 @@
                 
             } catch (error) {
                 console.error(error);
-                showError("Gagal menghasilkan strategi. Pastikan koneksi lancar atau coba lagi dalam beberapa saat.");
+                showError(error.message || "Gagal menghasilkan strategi. Pastikan API Key benar dan koneksi internet lancar.");
             } finally {
                 // Reset Button
                 document.getElementById('generateBtn').disabled = false;
@@ -273,6 +277,4 @@
         }
     </script>
 </body>
-</html>
-
-```
+</html> 
