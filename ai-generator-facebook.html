@@ -219,8 +219,8 @@
               "dm_script": "Template DM/Inbox sapaan pertama. Harus ramah, temukan kesamaan, selipkan rasa penasaran solusi, anti-jualan keras."
             }`;
 
-            // You can use standard gemini-1.5-flash since this is for production
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // You can use standard gemini-1.0-pro since this is for production
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent?key=${apiKey}`;
 
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
