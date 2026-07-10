@@ -1,71 +1,278 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prospek Istikmal Syariah - 3IReborn</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #001f3f, #003366); color: white; margin:0; padding:20px; }
-.container { max-width: 800px; margin: 0 auto; }
-h2 { text-align: center; color: #a8e6cf; }
-input, textarea, button { width:100%; max-width:700px; margin:10px auto; display:block; padding:14px; border-radius:12px; }
-button { background: linear-gradient(90deg, #00b4d8, #0077b6); color:white; font-weight:700; font-size:1.1rem; cursor:pointer; }
-button:hover { transform:scale(1.05); }
-.result { background:rgba(255,255,255,0.1); padding:25px; border-radius:16px; margin:25px auto; text-align:left; display:none; }
-.copy-btn { background:#4caf50; margin-top:5px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI FB Prospek Generator — 3iReborn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        darkblue: '#001f3f',
+                        navy: '#003366',
+                        cyan: '#00b4d8',
+                        ocean: '#0077b6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #001f3f, #003366);
+            background-attachment: fixed;
+            color: white;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .loader {
+            border: 4px solid rgba(0, 180, 216, 0.3);
+            border-top: 4px solid #00b4d8;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body>
-<div class="container">
-  <h2>🎯 Prospek Istikmal Syariah Generator</h2>
-  <p style="text-align:center;">3IReborn - Nabung untuk Umroh & Masa Depan</p>
+<body class="font-poppins min-h-screen p-4 md:p-8">
 
-  <input type="text" id="target" placeholder="Target Prospek (contoh: muslimah 30-42 tahun ibu rumah tangga)">
-  <button onclick="generateProspek()">🚀 GENERATE BAHAN PROSPEK</button>
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-cyan mb-2">🧠 AI FB Prospek Generator</h1>
+            <p class="text-gray-300 opacity-90">Analisa audiens, temukan pain points, & buat strategi "greget" untuk prospek Facebook.</p>
+        </div>
 
-  <div id="result" class="result"></div>
-  <a href="index.html" style="display:block; text-align:center; margin-top:30px; color:#a8e6cf;">← Kembali</a>
-</div>
+        <!-- Input Form -->
+        <div class="glass-panel rounded-2xl p-6 md:p-8 mb-8 shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-cyan">Produk / Jasa Anda</label>
+                    <input type="text" id="productInput" placeholder="Contoh: Asuransi Jiwa, Suplemen Diet, Jasa Web..." class="w-full p-3 rounded-xl bg-navy bg-opacity-50 border border-gray-600 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan text-white placeholder-gray-400 transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-cyan">Target Spesifik (Opsional)</label>
+                    <input type="text" id="audienceInput" placeholder="Contoh: Ibu rumah tangga, Pekerja kantoran 30+..." class="w-full p-3 rounded-xl bg-navy bg-opacity-50 border border-gray-600 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan text-white placeholder-gray-400 transition">
+                </div>
+            </div>
+            
+            <button id="generateBtn" onclick="generateStrategy()" class="w-full bg-gradient-to-r from-cyan to-ocean hover:scale-[1.02] transform transition-all duration-200 text-white font-bold py-4 rounded-xl shadow-[0_4px_15px_rgba(0,180,216,0.3)] flex justify-center items-center gap-2 text-lg">
+                <span>🔥 Buat Strategi Greget Sekarang</span>
+            </button>
 
-<script>
-function generateProspek() {
-  const target = document.getElementById('target').value.trim() || "keluarga Muslim usia produktif";
-  
-  document.getElementById('result').style.display = 'block';
-  document.getElementById('result').innerHTML = `
-    <h3>✅ Bahan Prospek untuk: <strong>${target}</strong></h3>
-    
-    <h4>1. Caption Postingan (Pilih salah satu)</h4>
-    <p><strong>Caption A:</strong><br>
-    "Assalamualaikum, apakah Anda ingin mempersiapkan Umroh keluarga sambil menabung Syariah?<br>
-    Istikmal Syariah 3IReborn hadir sebagai solusi. Nabung 5-7 tahun, dana kembali penuh + profit halal.<br>
-    DM untuk info lebih lanjut 🤲"</p>
-    
-    <button class="copy-btn" onclick="copyText(this)">Copy Caption A</button>
-    
-    <h4>2. Script DM (Langsung Copy)</h4>
-    <p><strong>DM 1 (Pembuka):</strong><br>
-    "Assalamualaikum kak, saya dari 3IReborn. Melihat kakak tertarik dengan perencanaan keuangan Syariah, boleh saya share program Istikmal untuk Umroh?"</p>
-    <button class="copy-btn" onclick="copyText(this)">Copy DM 1</button>
-    
-    <h4>3. Pertanyaan Kualifikasi Prospek</h4>
-    <ul>
-      <li>Sudah punya rencana Umroh atau Haji?</li>
-      <li>Berapa target dana yang ingin disiapkan?</li>
-      <li>Apakah tertarik dengan program Syariah yang halal & aman?</li>
-    </ul>
-  `;
-}
+            <!-- Loading & Error Messages -->
+            <div id="loadingIndicator" class="hidden flex-col items-center justify-center mt-6">
+                <div class="loader mb-3"></div>
+                <p class="text-cyan animate-pulse font-medium">AI sedang menganalisa data Facebook terbaik...</p>
+            </div>
+            <div id="errorMessage" class="hidden mt-4 p-4 bg-red-500 bg-opacity-20 border border-red-500 rounded-xl text-red-200 text-center text-sm">
+            </div>
+        </div>
 
-function copyText(btn) {
-  const text = btn.previousElementSibling ? btn.previousElementSibling.innerText : btn.parentElement.innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    const original = btn.innerText;
-    btn.innerText = "✅ Copied!";
-    setTimeout(() => btn.innerText = original, 2000);
-  });
-}
-</script>
+        <!-- Results Container (Hidden by default) -->
+        <div id="resultsContainer" class="hidden space-y-6">
+            
+            <!-- Persona & Targeting -->
+            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-cyan">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">🎯</span> Target Persona & Minat</h3>
+                <p id="resPersona" class="text-gray-200 leading-relaxed mb-4"></p>
+                <div class="bg-navy bg-opacity-50 p-4 rounded-xl">
+                    <h4 class="font-semibold text-cyan mb-2">Grup / Minat FB yang harus dicari:</h4>
+                    <ul id="resKeywords" class="list-disc list-inside text-gray-300 space-y-1"></ul>
+                </div>
+            </div>
+
+            <!-- Pain Points -->
+            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-red-400">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">⚡</span> Pain Points (Tombol Pemicu)</h3>
+                <p class="text-sm text-gray-400 mb-3">Masalah utama yang membuat mereka terdesak untuk membeli produk Anda:</p>
+                <ul id="resPainPoints" class="space-y-3"></ul>
+            </div>
+
+            <!-- Copywriting -->
+            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-yellow-400">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">✍️</span> Ide Status / Copywriting Hook</h3>
+                <p class="text-sm text-gray-400 mb-3">Gunakan angle ini untuk update status Facebook atau di dalam Grup:</p>
+                <div class="bg-navy bg-opacity-50 p-4 rounded-xl relative group">
+                    <button onclick="copyText('resCopywriting')" class="absolute top-2 right-2 bg-gray-700 hover:bg-cyan text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Copy</button>
+                    <p id="resCopywriting" class="text-gray-200 italic font-medium"></p>
+                </div>
+            </div>
+
+            <!-- DM Strategy -->
+            <div class="glass-panel rounded-2xl p-6 border-l-4 border-l-green-400">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="text-2xl">💬</span> Strategi DM (Anti-Spam)</h3>
+                <p class="text-sm text-gray-400 mb-3">Cara elegan menyapa di Inbox Messenger tanpa terlihat seperti sales:</p>
+                <div class="bg-navy bg-opacity-50 p-4 rounded-xl relative group">
+                    <button onclick="copyText('resDmScript')" class="absolute top-2 right-2 bg-gray-700 hover:bg-cyan text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Copy</button>
+                    <p id="resDmScript" class="text-gray-200 whitespace-pre-line"></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-12 mb-6">
+            <a href="index.html" class="text-cyan hover:text-white transition-colors text-sm font-medium">← Kembali ke Menu Utama 3iReborn</a>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = ""; // API key is injected by the environment
+
+        // Exponential backoff helper function
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        async function fetchWithRetry(url, options, maxRetries = 5) {
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return await response.json();
+                } catch (error) {
+                    if (i === maxRetries - 1) throw error;
+                    await delay(delays[i]);
+                }
+            }
+        }
+
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = text;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+            
+            // Temporary visual feedback (could be improved with a toast notification)
+            const btn = document.querySelector(`#${elementId}`).previousElementSibling;
+            const originalText = btn.innerText;
+            btn.innerText = "Copied!";
+            btn.classList.add("bg-green-500");
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove("bg-green-500");
+            }, 2000);
+        }
+
+        function showError(msg) {
+            const errDiv = document.getElementById('errorMessage');
+            errDiv.innerText = msg;
+            errDiv.classList.remove('hidden');
+            document.getElementById('loadingIndicator').classList.add('hidden');
+            document.getElementById('generateBtn').disabled = false;
+            document.getElementById('generateBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        async function generateStrategy() {
+            const product = document.getElementById('productInput').value.trim();
+            const audience = document.getElementById('audienceInput').value.trim();
+
+            if (!product) {
+                showError("Mohon masukkan nama Produk / Jasa Anda terlebih dahulu.");
+                return;
+            }
+
+            // UI State updates
+            document.getElementById('errorMessage').classList.add('hidden');
+            document.getElementById('resultsContainer').classList.add('hidden');
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+            document.getElementById('generateBtn').disabled = true;
+            document.getElementById('generateBtn').classList.add('opacity-50', 'cursor-not-allowed');
+
+            const targetText = audience ? `dengan target spesifik: ${audience}` : `untuk audiens umum`;
+            
+            const prompt = `Anda adalah seorang pakar Digital Marketing dan spesialis Facebook Organic Prospecting yang sangat agresif namun elegan. 
+            Tugas Anda adalah membuat analisis prospek Facebook yang spesifik dan "greget" untuk produk/jasa: "${product}" ${targetText}.
+            
+            Keluarkan jawaban HANYA dalam format JSON dengan struktur persis seperti ini, tanpa markdown, tanpa teks lain:
+            {
+              "persona": "Deskripsi psikologis 2-3 kalimat tentang siapa mereka sebenarnya, ketakutan mereka, dan apa yang mereka cari di Facebook.",
+              "search_keywords": ["Nama Grup FB spesifik (buat ide nama grup 3-4 kata)", "Minat/Interest Spesifik", "Tokoh yang mereka follow"],
+              "pain_points": ["Masalah emosional terdalam 1", "Masalah finansial/waktu 2", "Frustrasi saat ini 3"],
+              "copywriting_hook": "1 paragraf pendek (Hook + Body singkat) untuk update status FB yang mengundang rasa penasaran (curiosity) atau kontroversi ringan agar orang komen 'Mau dong' atau 'Gimana caranya?'.",
+              "dm_script": "Template pesan DM (Inbox) pertama kali menyapa. Harus terdengar sangat personal, puji postingan mereka, temukan kesamaan, baru selipkan sedikit rasa penasaran tentang solusi yang Anda miliki, tanpa terlihat jualan keras."
+            }`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            persona: { type: "STRING" },
+                            search_keywords: { type: "ARRAY", items: { type: "STRING" } },
+                            pain_points: { type: "ARRAY", items: { type: "STRING" } },
+                            copywriting_hook: { type: "STRING" },
+                            dm_script: { type: "STRING" }
+                        },
+                        required: ["persona", "search_keywords", "pain_points", "copywriting_hook", "dm_script"]
+                    }
+                }
+            };
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            try {
+                const data = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (data.error) {
+                    throw new Error(data.error.message || "Gagal menghubungi AI.");
+                }
+
+                const resultText = data.candidates[0].content.parts[0].text;
+                const resultJson = JSON.parse(resultText);
+
+                // Populate UI
+                document.getElementById('resPersona').innerText = resultJson.persona;
+                
+                const keywordsHtml = resultJson.search_keywords.map(kw => `<li>${kw}</li>`).join('');
+                document.getElementById('resKeywords').innerHTML = keywordsHtml;
+
+                const painPointsHtml = resultJson.pain_points.map(pp => 
+                    `<li class="flex gap-3 bg-red-500 bg-opacity-10 p-3 rounded-lg"><span class="text-red-400">✗</span> <span class="text-gray-200">${pp}</span></li>`
+                ).join('');
+                document.getElementById('resPainPoints').innerHTML = painPointsHtml;
+
+                document.getElementById('resCopywriting').innerText = resultJson.copywriting_hook;
+                document.getElementById('resDmScript').innerText = resultJson.dm_script;
+
+                // Show Results
+                document.getElementById('loadingIndicator').classList.add('hidden');
+                document.getElementById('resultsContainer').classList.remove('hidden');
+                
+            } catch (error) {
+                console.error(error);
+                showError("Gagal menghasilkan strategi. Pastikan koneksi lancar atau coba lagi dalam beberapa saat.");
+            } finally {
+                // Reset Button
+                document.getElementById('generateBtn').disabled = false;
+                document.getElementById('generateBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+    </script>
 </body>
 </html>
+
+```
