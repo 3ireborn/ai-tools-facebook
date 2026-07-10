@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -186,7 +186,7 @@
             const audience = document.getElementById('audienceInput').value.trim();
 
             if (!apiKey) {
-                showError("Mohon masukkan API Key Gemini terlebih dahulu. Klik tombol 'Ambil Gratis' untuk mendapatkan key.");
+                showError("Mohon masukkan API Key Gemini terlebih dahulu.");
                 return;
             }
 
@@ -207,24 +207,38 @@
 
             const targetText = audience ? `dengan target spesifik: ${audience}` : `untuk audiens umum`;
             
-            const prompt = `Anda adalah seorang pakar Digital Marketing dan spesialis Facebook Organic Prospecting. 
-            Tugas Anda adalah membuat analisis prospek Facebook yang "greget" untuk produk/jasa: "${product}" ${targetText}.
+            const prompt = `Anda adalah pakar Digital Marketing dan spesialis Facebook Organic Prospecting. 
+            Buat analisis prospek Facebook untuk produk/jasa: "${product}" ${targetText}.
             
-            Keluarkan jawaban HANYA dalam format JSON dengan struktur persis seperti ini, tanpa markdown, tanpa teks lain:
+            Keluarkan jawaban HANYA dalam format JSON persis seperti ini, tanpa markdown, tanpa teks lain:
             {
               "persona": "Deskripsi psikologis singkat tentang target market, apa ketakutan mereka, dan apa yang mereka cari.",
-              "search_keywords": ["Nama Grup FB spesifik (buat ide nama grup)", "Minat/Interest Spesifik", "Tokoh panutan mereka"],
-              "pain_points": ["Masalah emosional terdalam 1", "Masalah finansial/waktu 2", "Frustrasi saat ini 3"],
-              "copywriting_hook": "1 paragraf pendek (Hook + Body singkat) untuk status FB yang mengundang rasa penasaran agar orang komen.",
-              "dm_script": "Template DM/Inbox sapaan pertama. Harus ramah, temukan kesamaan, selipkan rasa penasaran solusi, anti-jualan keras."
+              "search_keywords": ["Grup FB 1", "Minat 2", "Tokoh 3"],
+              "pain_points": ["Masalah 1", "Masalah 2", "Masalah 3"],
+              "copywriting_hook": "1 paragraf hook pendek untuk status FB yang mengundang rasa penasaran.",
+              "dm_script": "Template DM sapaan pertama. Ramah, temukan kesamaan, anti-jualan keras."
             }`;
 
-            // You can use standard gemini-1.5-flash since this is for production
-        const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // MENGGUNAKAN VERSI API PALING STABIL (gemini-1.5-flash-latest)
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
 
-
+            // Struktur JSON Schema ditambahkan agar AI tidak salah format (Mencegah error)
             const payload = {
-                contents: [{ parts: [{ text: prompt }] }]
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            persona: { type: "STRING" },
+                            search_keywords: { type: "ARRAY", items: { type: "STRING" } },
+                            pain_points: { type: "ARRAY", items: { type: "STRING" } },
+                            copywriting_hook: { type: "STRING" },
+                            dm_script: { type: "STRING" }
+                        },
+                        required: ["persona", "search_keywords", "pain_points", "copywriting_hook", "dm_script"]
+                    }
+                }
             };
 
             try {
@@ -237,9 +251,6 @@
                 const data = await response.json();
 
                 if (!response.ok) {
-                    if (response.status === 400 && data.error && data.error.message.includes("API key not valid")) {
-                        throw new Error("API Key salah atau tidak valid. Silakan periksa kembali API Key Anda.");
-                    }
                     throw new Error(data.error?.message || "Terjadi kesalahan pada server AI.");
                 }
 
@@ -266,7 +277,7 @@
                 
             } catch (error) {
                 console.error(error);
-                showError(error.message || "Gagal menghasilkan strategi. Pastikan API Key benar dan koneksi internet lancar.");
+                showError("Error: " + (error.message || "Gagal menghasilkan strategi. Pastikan API Key benar."));
             } finally {
                 // Reset Button
                 document.getElementById('generateBtn').disabled = false;
@@ -275,4 +286,7 @@
         }
     </script>
 </body>
-</html> 
+</html>
+
+
+```
