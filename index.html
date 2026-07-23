@@ -1,82 +1,227 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NPA Digital Assistant — AI Tools Facebook</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-<style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0b1120, #003366);
-  color: white;
-  text-align: center;
-  padding: 2rem;
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.header-tag {
-  display: inline-block;
-  padding: 4px 16px;
-  background: rgba(0, 180, 216, 0.2);
-  border: 1px solid #00b4d8;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: #00b4d8;
-  margin-bottom: 1rem;
-}
-h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 0 0 15px rgba(0,180,216,0.4); }
-p { opacity: 0.7; margin-bottom: 2.5rem; font-size: 0.9rem; }
-.menu-container {
-  max-width: 450px;
-  margin: 0 auto;
-  width: 100%;
-}
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  margin: 14px auto;
-  padding: 1.2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: white;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(0, 180, 216, 0.3);
-  border-radius: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-button:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(90deg, #00b4d8, #0077b6);
-  border-color: transparent;
-  box-shadow: 0 10px 20px rgba(0,180,216,0.3);
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard AI Premium — NPA Smart System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { poppins: ['Poppins', 'sans-serif'], },
+                    colors: { darkblue: '#0b1120', navy: '#001f3f', cyan: '#00b4d8', ocean: '#0077b6', gold: '#FFD700' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: linear-gradient(135deg, #0b1120, #001f3f); background-attachment: fixed; color: white; min-height: 100vh; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 180, 216, 0.15); border-color: rgba(0, 180, 216, 0.4); }
+        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #00b4d8; border-radius: 10px; }
+    </style>
 </head>
-<body>
+<body class="font-poppins pb-12">
 
-<div class="menu-container">
-    <div class="header-tag">NPA EXCLUSIVE TOOL</div>
-    <h2>🤖 AI Tools Facebook</h2>
-    <p>Asisten Digital Pribadi untuk Menguasai Algoritma FB Pro & Melipatgandakan Closing Anda.</p>
+    <!-- Navbar -->
+    <nav class="glass-panel sticky top-0 z-40 border-b border-gray-800 p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-r from-cyan to-ocean p-2 rounded-lg"><i class="fa-solid fa-robot text-white text-xl"></i></div>
+                <h1 class="text-xl font-bold tracking-wide">NPA <span class="text-cyan">AI TOOLS</span></h1>
+            </div>
+            <div class="hidden md:flex items-center gap-2 bg-yellow-500 bg-opacity-20 text-yellow-400 px-4 py-1.5 rounded-full text-sm font-semibold border border-yellow-500 border-opacity-30">
+                <i class="fa-solid fa-crown"></i> VVIP Member
+            </div>
+        </div>
+    </nav>
 
-    <button onclick="location.href='ai-generator-facebook.html'"><i class="fa-solid fa-brain text-cyan-400"></i> AI FB Prospek Generator</button>
-    <button onclick="location.href='ai-chat.html'"><i class="fa-solid fa-comments text-green-400"></i> AI Chat / CS Balas Pesan</button>
-    <button onclick="location.href='ai-desain.html'"><i class="fa-solid fa-palette text-pink-400"></i> AI Desain & Visual</button>
-    <button onclick="location.href='ai-analyzer.html'"><i class="fa-solid fa-magnifying-glass-chart text-yellow-400"></i> Konten Analyzer (Bedah Copywriting)</button>
-    <button onclick="location.href='ai-seo.html'"><i class="fa-solid fa-rocket text-purple-400"></i> SEO Keyword Tool</button>
-</div>
+    <!-- Header Section -->
+    <div class="max-w-6xl mx-auto px-4 mt-10 mb-12 text-center">
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Pusat Komando <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-ocean">AI Bisnis Anda</span></h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">Selamat datang di Dashboard Premium NPA Smart System. Gunakan kelima senjata rahasia di bawah ini untuk melipatgandakan closing dan mendominasi algoritma sosial media.</p>
+    </div>
 
+    <!-- Tools Grid -->
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Tool 1 -->
+        <div class="glass-panel p-6 rounded-2xl card-hover transition-all duration-300 flex flex-col justify-between h-full">
+            <div>
+                <div class="w-14 h-14 rounded-full bg-blue-500 bg-opacity-20 flex items-center justify-center mb-4 text-blue-400 text-2xl border border-blue-500 border-opacity-30">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">FB Prospek Generator</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Bedah peta psikologi target market, temukan pain points, & racik hook status FB yang memicu interaksi untuk produk apapun.</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="openModal('modal-prospek')" class="flex-1 py-2.5 rounded-xl border border-gray-600 text-gray-300 text-sm font-semibold hover:bg-gray-800 transition"><i class="fa-solid fa-book-open mr-1"></i> Panduan</button>
+                <a href="ai-generator-facebook.html" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold text-center transition shadow-lg flex items-center justify-center"><i class="fa-solid fa-rocket mr-2"></i> Buka Tool</a>
+            </div>
+        </div>
+
+        <!-- Tool 2 -->
+        <div class="glass-panel p-6 rounded-2xl card-hover transition-all duration-300 flex flex-col justify-between h-full">
+            <div>
+                <div class="w-14 h-14 rounded-full bg-green-500 bg-opacity-20 flex items-center justify-center mb-4 text-green-400 text-2xl border border-green-500 border-opacity-30">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">AI Chat / CS Balas Pesan</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Asisten CS otomatis untuk membalas komplain, menjawab penolakan harga, dan menggiring prospek menuju closing.</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="openModal('modal-chat')" class="flex-1 py-2.5 rounded-xl border border-gray-600 text-gray-300 text-sm font-semibold hover:bg-gray-800 transition"><i class="fa-solid fa-book-open mr-1"></i> Panduan</button>
+                <a href="ai-chat.html" class="flex-1 py-2.5 rounded-xl bg-green-600 hover:bg-green-500 text-white text-sm font-semibold text-center transition shadow-lg flex items-center justify-center"><i class="fa-solid fa-rocket mr-2"></i> Buka Tool</a>
+            </div>
+        </div>
+
+        <!-- Tool 3 -->
+        <div class="glass-panel p-6 rounded-2xl card-hover transition-all duration-300 flex flex-col justify-between h-full">
+            <div>
+                <div class="w-14 h-14 rounded-full bg-pink-500 bg-opacity-20 flex items-center justify-center mb-4 text-pink-400 text-2xl border border-pink-500 border-opacity-30">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">AI Desain & Visual</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Art Director pribadi. Racik konsep thumbnail CTR tinggi, skema warna, dan prompt gambar HD untuk Midjourney/Bing.</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="openModal('modal-desain')" class="flex-1 py-2.5 rounded-xl border border-gray-600 text-gray-300 text-sm font-semibold hover:bg-gray-800 transition"><i class="fa-solid fa-book-open mr-1"></i> Panduan</button>
+                <a href="ai-desain.html" class="flex-1 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold text-center transition shadow-lg flex items-center justify-center"><i class="fa-solid fa-rocket mr-2"></i> Buka Tool</a>
+            </div>
+        </div>
+
+        <!-- Tool 4 -->
+        <div class="glass-panel p-6 rounded-2xl card-hover transition-all duration-300 flex flex-col justify-between h-full">
+            <div>
+                <div class="w-14 h-14 rounded-full bg-yellow-500 bg-opacity-20 flex items-center justify-center mb-4 text-yellow-400 text-2xl border border-yellow-500 border-opacity-30">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Konten Analyzer</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Bedah draf jualan yang lemas, beri skor kekuatan, dan rombak otomatis jadi copywriting berkonversi tinggi dengan formula AIDA.</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="openModal('modal-analyzer')" class="flex-1 py-2.5 rounded-xl border border-gray-600 text-gray-300 text-sm font-semibold hover:bg-gray-800 transition"><i class="fa-solid fa-book-open mr-1"></i> Panduan</button>
+                <a href="ai-analyzer.html" class="flex-1 py-2.5 rounded-xl bg-yellow-600 hover:bg-yellow-500 text-white text-sm font-semibold text-center transition shadow-lg flex items-center justify-center"><i class="fa-solid fa-rocket mr-2"></i> Buka Tool</a>
+            </div>
+        </div>
+
+        <!-- Tool 5 -->
+        <div class="glass-panel p-6 rounded-2xl card-hover transition-all duration-300 flex flex-col justify-between h-full lg:col-span-2">
+            <div>
+                <div class="w-14 h-14 rounded-full bg-purple-500 bg-opacity-20 flex items-center justify-center mb-4 text-purple-400 text-2xl border border-purple-500 border-opacity-30">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">SEO Keyword Tool</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Pawang algoritma pencarian. Temukan kata kunci (LSI), hashtag viral, dan deskripsi SEO agar postingan Anda muncul paling atas di Facebook, Google, maupun TikTok.</p>
+            </div>
+            <div class="flex gap-3 mt-auto w-full md:w-1/2">
+                <button onclick="openModal('modal-seo')" class="flex-1 py-2.5 rounded-xl border border-gray-600 text-gray-300 text-sm font-semibold hover:bg-gray-800 transition"><i class="fa-solid fa-book-open mr-1"></i> Panduan</button>
+                <a href="ai-seo.html" class="flex-1 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold text-center transition shadow-lg flex items-center justify-center"><i class="fa-solid fa-rocket mr-2"></i> Buka Tool</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL PANDUAN (Pop-ups) -->
+    
+    <!-- Modal Prospek -->
+    <div id="modal-prospek" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 opacity-0 invisible">
+        <div class="bg-[#0b1120] border border-gray-700 w-11/12 md:w-2/3 lg:w-1/2 rounded-2xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto shadow-2xl">
+            <button onclick="closeModal('modal-prospek')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-blue-400 mb-4"><i class="fa-solid fa-brain mr-2"></i> Panduan FB Prospek Generator</h3>
+            <ul class="space-y-3 text-sm text-gray-300 list-decimal list-inside">
+                <li>Masukkan <strong class="text-white">API Key Gemini</strong> Anda (cukup sekali, otomatis tersimpan).</li>
+                <li>Pilih <strong class="text-white">Mesin Robot AI</strong> (Rekomendasi: Gemini 2.5 Flash).</li>
+                <li>Masukkan <strong class="text-white">Nama Produk / Bisnis Anda</strong> (Contoh: Nasi Bakar Mama Asha, MLM, dll).</li>
+                <li>(Opsional) Masukkan <strong class="text-white">Target Spesifik</strong> jika ada (Contoh: Ibu Rumah Tangga).</li>
+                <li>Klik tombol <strong class="text-cyan">Buat Strategi Prospek Sekarang</strong>.</li>
+            </ul>
+            <p class="mt-4 text-sm text-gray-400 border-t border-gray-700 pt-4"><strong class="text-white">Hasil:</strong> Anda akan mendapatkan target grup FB yang pas, 3 pemicu masalah (pain points), draf status pemancing rasa penasaran, serta template DM anti-spam.</p>
+        </div>
+    </div>
+
+    <!-- Modal Chat -->
+    <div id="modal-chat" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 opacity-0 invisible">
+        <div class="bg-[#0b1120] border border-gray-700 w-11/12 md:w-2/3 lg:w-1/2 rounded-2xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto shadow-2xl">
+            <button onclick="closeModal('modal-chat')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-green-400 mb-4"><i class="fa-solid fa-comments mr-2"></i> Panduan AI Chat Generator</h3>
+            <ul class="space-y-3 text-sm text-gray-300 list-decimal list-inside">
+                <li>Paste <strong class="text-white">Teks Chat / Pertanyaan</strong> dari calon pelanggan yang sulit dijawab.</li>
+                <li>Tuliskan <strong class="text-white">Nama Produk & Fakta Bisnis Anda</strong> di kolom konteks agar AI paham.</li>
+                <li>Pilih <strong class="text-white">Tujuan / Gaya Balasan</strong> (Handle Penolakan, Edukasi, Giring Closing, atau Follow Up).</li>
+                <li>Klik tombol <strong class="text-cyan">Racik Balasan Chat Cerdas</strong>.</li>
+            </ul>
+            <p class="mt-4 text-sm text-gray-400 border-t border-gray-700 pt-4"><strong class="text-white">Hasil:</strong> AI menyajikan 3 Opsi Balasan (Singkat, Emosional, Profesional). Tinggal klik Copy dan kirim ke prospek!</p>
+        </div>
+    </div>
+
+    <!-- Modal Desain -->
+    <div id="modal-desain" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 opacity-0 invisible">
+        <div class="bg-[#0b1120] border border-gray-700 w-11/12 md:w-2/3 lg:w-1/2 rounded-2xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto shadow-2xl">
+            <button onclick="closeModal('modal-desain')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-pink-400 mb-4"><i class="fa-solid fa-palette mr-2"></i> Panduan AI Desain & Visual</h3>
+            <ul class="space-y-3 text-sm text-gray-300 list-decimal list-inside">
+                <li>Tuliskan <strong class="text-white">Topik / Ide Postingan Anda</strong> (Contoh: PROMO STOK TERBATAS).</li>
+                <li>Pilih <strong class="text-white">Gaya Visual Desain</strong> (Clickbait, Elegan, Emosional, Agamis).</li>
+                <li>Klik tombol <strong class="text-cyan">Racik Konsep Desain</strong>.</li>
+            </ul>
+            <p class="mt-4 text-sm text-gray-400 border-t border-gray-700 pt-4"><strong class="text-white">Hasil:</strong> Anda mendapatkan racikan teks thumbnail CTR tinggi, rekomendasi visual Canva, skema warna, hingga prompt AI Bahasa Inggris untuk Bing Image Creator.</p>
+        </div>
+    </div>
+
+    <!-- Modal Analyzer -->
+    <div id="modal-analyzer" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 opacity-0 invisible">
+        <div class="bg-[#0b1120] border border-gray-700 w-11/12 md:w-2/3 lg:w-1/2 rounded-2xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto shadow-2xl">
+            <button onclick="closeModal('modal-analyzer')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-yellow-400 mb-4"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i> Panduan Konten Analyzer</h3>
+            <ul class="space-y-3 text-sm text-gray-300 list-decimal list-inside">
+                <li>Paste <strong class="text-white">Draf Status FB / Tulisan Mentah</strong> yang ingin Anda posting.</li>
+                <li>Pastikan tulisan lumayan panjang agar AI bisa menganalisa strukturnya.</li>
+                <li>Klik tombol <strong class="text-cyan">Analisa & Rombak Sekarang</strong>.</li>
+            </ul>
+            <p class="mt-4 text-sm text-gray-400 border-t border-gray-700 pt-4"><strong class="text-white">Hasil:</strong> Skor daya tarik konten (1-100), evaluasi hook & emosi, serta hasil tulisan ulang yang sudah dipoles dengan teknik copywriting AIDA (siap posting!).</p>
+        </div>
+    </div>
+
+    <!-- Modal SEO -->
+    <div id="modal-seo" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 opacity-0 invisible">
+        <div class="bg-[#0b1120] border border-gray-700 w-11/12 md:w-2/3 lg:w-1/2 rounded-2xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto shadow-2xl">
+            <button onclick="closeModal('modal-seo')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-purple-400 mb-4"><i class="fa-solid fa-rocket mr-2"></i> Panduan SEO Keyword Tool</h3>
+            <ul class="space-y-3 text-sm text-gray-300 list-decimal list-inside">
+                <li>Tuliskan <strong class="text-white">Topik / Nama Produk Anda</strong>.</li>
+                <li>Pilih <strong class="text-white">Target Platform</strong> (FB Organic, YouTube, TikTok, dll).</li>
+                <li>(Opsional) Isikan <strong class="text-white">Target Audiens</strong> Anda.</li>
+                <li>Klik tombol <strong class="text-cyan">Riset Keyword Sekarang</strong>.</li>
+            </ul>
+            <p class="mt-4 text-sm text-gray-400 border-t border-gray-700 pt-4"><strong class="text-white">Hasil:</strong> 3 rekomendasi judul SEO, daftar kata kunci turunan (LSI), hashtag viral, dan deskripsi meta singkat untuk memanjakan algoritma.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('opacity-0', 'invisible');
+            modal.classList.add('opacity-100', 'visible');
+        }
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('opacity-100', 'visible');
+            modal.classList.add('opacity-0', 'invisible');
+        }
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('opacity-100', 'visible');
+                event.target.classList.add('opacity-0', 'invisible');
+            }
+        }
+    </script>
 </body>
 </html>
