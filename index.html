@@ -3,50 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Tools Facebook — NPA</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>NPA Digital Assistant — AI Tools Facebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <style>
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #001f3f, #003366);
+  background: linear-gradient(135deg, #0b1120, #003366);
   color: white;
   text-align: center;
   padding: 2rem;
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-h2 { font-size: 1.9rem; margin-bottom: 0.5rem; }
-p { opacity: 0.85; margin-bottom: 2.5rem; }
-button {
-  display: block;
+.header-tag {
+  display: inline-block;
+  padding: 4px 16px;
+  background: rgba(0, 180, 216, 0.2);
+  border: 1px solid #00b4d8;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #00b4d8;
+  margin-bottom: 1rem;
+}
+h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 0 0 15px rgba(0,180,216,0.4); }
+p { opacity: 0.7; margin-bottom: 2.5rem; font-size: 0.9rem; }
+.menu-container {
+  max-width: 450px;
+  margin: 0 auto;
   width: 100%;
-  max-width: 420px;
-  margin: 12px auto;
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin: 14px auto;
   padding: 1.2rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: white;
-  background: linear-gradient(90deg, #00b4d8, #0077b6);
-  border: none;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: 16px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0,180,216,0.3);
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #00b4d8, #0077b6);
+  border-color: transparent;
+  box-shadow: 0 10px 20px rgba(0,180,216,0.3);
 }
 </style>
 </head>
 <body>
 
-<h2>🤖 AI Tools Facebook</h2>
-<p>NPA Digital Assistant - Tools Prospek Facebook</p>
+<div class="menu-container">
+    <div class="header-tag">NPA EXCLUSIVE TOOL</div>
+    <h2>🤖 AI Tools Facebook</h2>
+    <p>Asisten Digital Pribadi untuk Menguasai Algoritma FB Pro & Melipatgandakan Closing Anda.</p>
 
-<button onclick="location.href='ai-generator-facebook.html'">🧠 AI Facebook Prospek Generator</button>
-<button onclick="location.href='ai-chat.html'">💬 AI Chat Generator</button>
-<button onclick="location.href='ai-desain.html'">🎨 Desain Otomatis</button>
-<button onclick="location.href='ai-analyzer.html'">🧠 Konten Analyzer</button>
-<button onclick="location.href='ai-seo.html'">🚀 SEO Keyword Tool</button>
+    <button onclick="location.href='ai-generator-facebook.html'"><i class="fa-solid fa-brain text-cyan-400"></i> AI FB Prospek Generator</button>
+    <button onclick="location.href='ai-chat.html'"><i class="fa-solid fa-comments text-green-400"></i> AI Chat / CS Balas Pesan</button>
+    <button onclick="location.href='ai-desain.html'"><i class="fa-solid fa-palette text-pink-400"></i> AI Desain & Visual</button>
+    <button onclick="location.href='ai-analyzer.html'"><i class="fa-solid fa-magnifying-glass-chart text-yellow-400"></i> Konten Analyzer (Bedah Copywriting)</button>
+    <button onclick="location.href='ai-seo.html'"><i class="fa-solid fa-rocket text-purple-400"></i> SEO Keyword Tool</button>
+</div>
 
 </body>
 </html>
